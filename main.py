@@ -10,7 +10,7 @@ call_out_counter = 0
 def show_inventory():
   if len(inventory) == 0:
     print('There is nothing in your inventory')
-  print('Inventory:')
+  print('Current Inventory:')
   for item in inventory.values():
     print(item)
 
@@ -39,10 +39,18 @@ def initial_call_out():
 Looks like you're right back where you started''')
 
 def initial_examine():
-  print('You see a glob on the nightstand. Something compels you to take it')
-  inventory['glob'] = 'Glob'
-  show_inventory()
-  
+  print('You see a glob on the nightstand. Do you reach out to take it and add it to your inventory? Y/N')
+  add_glob = input('> ')
+
+  string_glob = str(add_glob)
+
+  if string_glob.lower() == 'y':
+    inventory['glob'] = 'Glob'
+    print('Glob added to inventory')
+    show_inventory()
+
+  if string_glob.lower() == 'n':
+    print('That might be a good call, that looks like a particularly sticky glob')
 
 def initial_sleep():
   print('this is where the sleep is going. Is this where you enter into the actual game? Every time that you sleep, something integral to the game changes')
