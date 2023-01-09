@@ -32,22 +32,6 @@ def first_response(initial_response):
     show_inventory()
 
 
-## Calling out at first response
-def initial_call_out():
-  global call_out_counter
-  if call_out_counter == 0:
-    print(f'call out conter is this {call_out_counter}')
-    call_out_counter += 1
-    print('\'Hello? Is anybody there?\' You cry out.')
-    time.sleep(1.8)
-    print('''Nothing happens, no one responds. You appear to be alone.
-Perhaps you should try something else''')
-    post_callout_one()
-  else:
-    print(f'You call out again, to the same affect. Adventurous, aren\'t we?')
-    post_callout_two()
-
-
 def initial_examine():
   print('You see a glob on the nightstand. Do you reach out to take it and add it to your inventory? Y/N')
   add_glob = input('> ')
@@ -64,17 +48,32 @@ def initial_examine():
 
 def initial_sleep():
   print('this is where the sleep is going. Is this where you enter into the actual game? Every time that you sleep, something integral to the game changes')
+  
+  
+  
+## Calling out at first response
+def initial_call_out():
+  global call_out_counter
+  if call_out_counter == 0:
+    print(f'call out conter is this {call_out_counter}')
+    call_out_counter += 1
+    print('\'Hello? Is anybody there?\' You cry out.')
+    time.sleep(1.8)
+    print('''Nothing happens, no one responds. You appear to be alone.
+Perhaps you should try something else''')
+    post_callout_one()
+  if call_out_counter == 1:
+    post_callout_two()
 
 
-
-## Still in bed after calling out once
+## Input after calling out once
 def post_callout_one():
   print('''Let\'s try this again, shall we? As you are laying in the bed, what do you do?''')
   post_callout_response = input('''1. Call out
-    2. Examine the room
-    3. Go back to sleep
-    4. Look into your inventory
-    > ''')
+2. Examine the room
+3. Go back to sleep
+4. Look into your inventory
+> ''')
   
   int_response = int(post_callout_response)
   
@@ -94,14 +93,14 @@ def post_callout_one():
     show_inventory()
 
 
-## Still in bed after calling out twice
+## Input after calling out twice
 def post_callout_two():
   print('''You simply cannot call out again, that's not how this works. I\'m going to give you the option to, but you're gonna look like a real jagaloon if you call out again''')
   post_callout_response = input('''1. Call out
-    2. Examine the room
-    3. Go back to sleep
-    4. Look into your inventory
-    > ''')
+2. Examine the room
+3. Go back to sleep
+4. Look into your inventory
+> ''')
   
   int_response = int(post_callout_response)
   
